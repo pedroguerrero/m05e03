@@ -1,14 +1,20 @@
 import docImg from '../../assets/doc-1.png';
 
 export const getDoctors = async () => {
+  let data = [];
   const specialties = ['Pediatría', 'Cardiología', 'Cirugía', 'Traumatología'];
-  const response = await fetch('https://jsonplaceholder.typicode.com/users');
 
-  if (!response.ok) {
-    throw new Error('Error al obtener los medicos');
+  try {
+    const response = await fetch('https://jsonplaceholder.typicode.com/users');
+
+    if (!response.ok) {
+      throw new Error('Error al obtener los medicos');
+    }
+
+    data = await response.json();
+  } catch (error) {
+    alert('Error al obtener los medicos', error.message);
   }
-
-  const data = await response.json();
 
   return data.map(({ id, name }) => ({
     id,
