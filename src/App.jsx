@@ -15,9 +15,6 @@ function App() {
   const [doctors, setDoctors] = useState([]);
   const [doctor, setDoctor] = useState({});
   const [showModalDoctor, setShowModalDoctor] = useState(false);
-  const [userName, setUserName] = useState(
-    localStorage.getItem('username') || 'Pedro Guerrero'
-  );
 
   return (
     <>
@@ -60,19 +57,6 @@ function App() {
                   </li>
                 ))}
               </ul>
-
-              <span>{userName}</span>
-
-              <Button
-                className="btn btn-secondary"
-                onClick={() => {
-                  const user = `Usuario ${Math.floor(Math.random() * 1000)}`;
-                  setUserName(user);
-                  localStorage.setItem('username', user);
-                }}
-              >
-                Cambiar Nombre
-              </Button>
             </Container>
           </Container>
         </NavBar>
